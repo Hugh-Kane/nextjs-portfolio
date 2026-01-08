@@ -4,69 +4,54 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import SocialIcon from '@/components/social-icons'
+import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import type { Authors } from 'contentlayer/generated'
+import type { CoreContent } from 'pliny/utils/contentlayer'
 
 const MAX_DISPLAY = 5
 
-export default function Home({ posts }) {
+export default function Home({
+  posts,
+  author,
+  authorContent,
+}: {
+  posts: any
+  author: Authors
+  authorContent: CoreContent<Authors>
+}) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Hugh
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
-        </div>
         <section className="space-y-6">
           <div className="flex items-center gap-6">
-            <Image
-              src="/static/images/avatar.png"
-              width={120}
-              height={120}
-              alt="Adarsha Acharya"
-              className="rounded-2xl transition-all duration-300 hover:scale-105"
-              priority
-            />
+            {authorContent.avatar && (
+              <Image
+                src={authorContent.avatar}
+                width={120}
+                height={120}
+                alt={authorContent.name}
+                className="rounded-2xl transition-all duration-300 hover:scale-105"
+                priority
+              />
+            )}
             <div className="flex-1 space-y-4">
-              <h1 className="text-2xl font-bold">Adarsha Acharya</h1>
+              <h1 className="text-2xl font-bold">{authorContent.name}</h1>
 
               <div className="flex items-center gap-4">
-                {/* {SOCIALS.map((social) => (
-                  <SocialLink
-                    key={social.label}
-                    aria-label={`Follow on ${social.label}`}
-                    href={social.href}
-                    icon={social.icon}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  />
-                ))} */}
+                <SocialIcon kind="mail" href={`mailto:${authorContent.email}`} />
+                <SocialIcon kind="github" href={authorContent.github} />
+                <SocialIcon kind="linkedin" href={authorContent.linkedin} />
+                <SocialIcon kind="x" href={authorContent.twitter} />
+                {authorContent.bluesky && (
+                  <SocialIcon kind="bluesky" href={authorContent.bluesky} />
+                )}
               </div>
             </div>
           </div>
 
-          <div className="text-muted-foreground space-y-4 leading-relaxed">
-            <p>
-              I&apos;m a fullstack software engineer specializing in building web applications
-              powered by modern JavaScript technologies and AI-driven features.
-            </p>
-            <p>
-              Over the years, I&apos;ve worked on multiple startups to build and launch end-to-end
-              products in insurance, iGaming, and video streaming domains, and have actively
-              contributed to various open source projects.
-            </p>
-            <p>
-              If you have an exciting project or role that aligns with my expertise, please reach
-              out at{' '}
-              <a
-                href="mailto:hi@adarsha.dev"
-                className="text-foreground hover:text-primary font-medium underline underline-offset-4 transition-colors"
-              >
-                hi@adarsha.dev
-              </a>{' '}
-              or through any of my social channels.
-            </p>
+          <div className="prose dark:prose-invert text-muted-foreground max-w-none space-y-4 leading-relaxed">
+            <MDXLayoutRenderer code={author.body.code} />
           </div>
 
           <div className="flex gap-3">
