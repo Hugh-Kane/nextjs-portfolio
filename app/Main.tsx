@@ -8,8 +8,13 @@ import SocialIcon from '@/components/social-icons'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import type { Authors } from 'contentlayer/generated'
 import type { CoreContent } from 'pliny/utils/contentlayer'
+import projectsData from '@/data/projectsData'
+import Card from '@/components/Card'
+import { genPageMetadata } from 'app/seo'
 
 const MAX_DISPLAY = 5
+
+export const metadata = genPageMetadata({ title: 'Projects' })
 
 export default function Home({
   posts,
@@ -36,7 +41,9 @@ export default function Home({
               />
             )}
             <div className="flex-1 space-y-4">
-              <h1 className="text-2xl font-bold">{authorContent.name}</h1>
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                {authorContent.name}
+              </h1>
 
               <div className="flex items-center gap-4">
                 <SocialIcon kind="mail" href={`mailto:${authorContent.email}`} />
@@ -69,74 +76,33 @@ export default function Home({
             </Button> */}
           </div>
         </section>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
-            return (
-              <li key={slug} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl leading-8 font-bold tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                      <div className="text-base leading-6 font-medium">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read more: "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </li>
-            )
-          })}
-        </ul>
       </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base leading-6 font-medium">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
-          >
-            All Posts &rarr;
-          </Link>
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
+            Projects
+          </h2>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+            A showcase of my development projects and technical explorations
+          </p>
         </div>
-      )}
-      {siteMetadata.newsletter?.provider && (
-        <div className="flex items-center justify-center pt-4">
-          <NewsletterForm />
+        <div className="container py-12">
+          <div className="flex flex-col gap-8">
+            {projectsData.map((d) => (
+              <Card
+                key={d.title}
+                title={d.title}
+                description={d.description}
+                imgSrc={d.imgSrc}
+                href={d.href}
+                tags={d.tags}
+                githubUrl={d.githubUrl}
+                demoUrl={d.demoUrl}
+              />
+            ))}
+          </div>
         </div>
-      )}
+      </div>
     </>
   )
 }
