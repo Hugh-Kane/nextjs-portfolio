@@ -62,18 +62,23 @@ export default function Home({
           </div>
 
           <div className="flex gap-3">
-            {/* <Button variant="outline" asChild>
-              <a href={LINKS.RESUME} target="_blank" rel="noopener noreferrer">
-                <Download className="mr-2 h-4 w-4" />
-                Resume
-              </a>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/projects">
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button> */}
+            <a
+              href="/resume.pdf"
+              download
+              className="bg-primary-600 hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-600 flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              aria-label="Download Resume"
+            >
+              {/* Download Icon SVG */}
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                />
+              </svg>
+              <span>Resume</span>
+            </a>
           </div>
         </section>
       </div>
