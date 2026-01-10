@@ -21,7 +21,7 @@ export default function Home({
   author,
   authorContent,
 }: {
-  posts: any
+  posts: unknown
   author: Authors
   authorContent: CoreContent<Authors>
 }) {
