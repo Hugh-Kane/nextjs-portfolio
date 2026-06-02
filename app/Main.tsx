@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
@@ -10,21 +12,23 @@ import type { Authors } from 'contentlayer/generated'
 import type { CoreContent } from 'pliny/utils/contentlayer'
 import projectsData from '@/data/projectsData'
 import Card from '@/components/Card'
-import { genPageMetadata } from 'app/seo'
+import { useTranslation } from '@/hooks/useTranslation'
 
 const MAX_DISPLAY = 5
 
-export const metadata = genPageMetadata({ title: 'Projects' })
-
 export default function Home({
   posts,
-  author,
+  authorEn,
+  authorJa,
   authorContent,
 }: {
   posts: unknown
-  author: Authors
+  authorEn: Authors
+  authorJa: Authors
   authorContent: CoreContent<Authors>
 }) {
+  const { t, currentLanguage } = useTranslation()
+  const author = currentLanguage === 'ja' ? authorJa : authorEn
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -77,7 +81,7 @@ export default function Home({
                   d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                 />
               </svg>
-              <span>Resume</span>
+              <span>{t('home.resume')}</span>
             </a>
           </div>
         </section>
@@ -85,17 +89,17 @@ export default function Home({
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">
-            Projects
+            {t('home.projectsTitle')}
           </h2>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            A showcase of my development projects and technical explorations
+            {t('home.projectsDescription')}
           </p>
         </div>
         <div className="container py-12">
           <div className="flex flex-col gap-8">
             {projectsData.map((d) => (
               <Card
-                key={d.title}
+                key={d.title.en}
                 title={d.title}
                 description={d.description}
                 imgSrc={d.imgSrc}

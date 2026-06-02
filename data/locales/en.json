@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "tags": "Tags",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "home": {
+    "resume": "Resume",
+    "projectsTitle": "Projects",
+    "projectsDescription": "A showcase of my development projects and technical explorations"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A showcase of my development projects and technical explorations"
+  },
+  "blog": {
+    "allPosts": "All Posts",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "of"
+  },
+  "tags": {
+    "title": "Tags",
+    "noTags": "No tags found."
+  },
+  "card": {
+    "code": "Code",
+    "demo": "Demo"
+  },
+  "notFound": {
+    "title": "Sorry we couldn't find this page.",
+    "message": "But dont worry, you can find plenty of other things on our homepage.",
+    "back": "Back to homepage"
+  }
+}

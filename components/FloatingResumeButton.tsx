@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function FloatingResumeButton() {
+  const { t } = useTranslation()
   // State to track if button should be visible
   const [isVisible, setIsVisible] = useState(false)
 
@@ -45,7 +47,7 @@ export default function FloatingResumeButton() {
             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
           />
         </svg>
-        <span>Resume</span>
+        <span>{t('home.resume')}</span>
       </a>
     </div>
   )

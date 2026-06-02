@@ -1,6 +1,11 @@
+interface LocalizedText {
+  en: string
+  ja: string
+}
+
 interface Project {
-  title: string
-  description: string
+  title: LocalizedText
+  description: LocalizedText
   href?: string
   imgSrc?: string
   tags?: string[] // Add this
@@ -13,10 +18,18 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'Automated Ad Creative Upload System',
-    description: `Created an internal JupyterHub workflow to automate video uploads for ad campaigns
+    title: {
+      en: 'Automated Ad Creative Upload System',
+      ja: '広告クリエイティブ自動アップロードシステム',
+    },
+    description: {
+      en: `Created an internal JupyterHub workflow to automate video uploads for ad campaigns
   using Meta and TikTok APIs. Integrated real-time Slack status notifications,
   reducing campaign setup time from 3 days to under 1 hour and tripling weekly launch volume.`,
+      ja: `Meta・TikTok APIを用いて広告キャンペーンの動画アップロードを自動化する社内向け
+  JupyterHubワークフローを構築。Slackへのリアルタイム通知を統合し、キャンペーンの
+  設定時間を3日から1時間未満に短縮、週あたりの配信数を3倍に拡大しました。`,
+    },
     imgSrc: '/static/images/ad-automation.png',
     tags: [
       'Python',
@@ -29,30 +42,56 @@ const projectsData: Project[] = [
     ],
   },
   {
-    title: 'Ski Resort Lift Status iOS App',
-    description: `Independently developed an iOS app in SwiftUI to display real-time ski lift status.
+    title: {
+      en: 'Ski Resort Lift Status iOS App',
+      ja: 'スキー場リフト運行状況 iOSアプリ',
+    },
+    description: {
+      en: `Independently developed an iOS app in SwiftUI to display real-time ski lift status.
   Implemented state management, responsive UI design, and ongoing stability improvements
   in preparation for App Store release.`,
+      ja: `リアルタイムのスキーリフト運行状況を表示するiOSアプリをSwiftUIで個人開発。
+  状態管理やレスポンシブなUI設計を実装し、App Storeリリースに向けて
+  継続的に安定性を改善しています。`,
+    },
     imgSrc: '/static/images/LSJ.png',
     tags: ['SwiftUI', 'iOS', 'Personal Project'],
   },
   {
-    title: 'Clinic Website (Next.js App Router)',
-    description: `Designed and developed an official website for a real Japanese medical clinic
+    title: {
+      en: 'Clinic Website (Next.js App Router)',
+      ja: 'クリニック公式サイト（Next.js App Router）',
+    },
+    description: {
+      en: `Designed and developed an official website for a real Japanese medical clinic
   using Next.js (App Router). Focused on responsive design, SEO-friendly structure,
   and UI/UX suited for medical institutions. Ongoing paid engagement.`,
+      ja: `Next.js（App Router）を用いて、実在する日本の医療クリニックの公式サイトを
+  設計・開発。レスポンシブデザイン、SEOに配慮した構造、医療機関に適した
+  UI/UXを重視しました。現在も継続中の有償案件です。`,
+    },
     imgSrc: '/static/images/tajima-clinic.png',
     tags: ['Next.js', 'React', 'SEO', 'Web Development'],
     demoUrl: 'https://next-js-clinic.vercel.app/',
   },
   {
-    title: 'Scalable Marketing Analytics Data Pipeline',
-    description: `Designed and implemented a production-grade data platform handling end-to-end
+    title: {
+      en: 'Scalable Marketing Analytics Data Pipeline',
+      ja: 'スケーラブルなマーケティング分析データパイプライン',
+    },
+    description: {
+      en: `Designed and implemented a production-grade data platform handling end-to-end
 ingestion, orchestration, and analytics for multi-channel marketing data.
 Integrated multiple external APIs and scraping jobs into a unified schema,
 orchestrated via Airflow with retries, backfills, SLA monitoring, and Slack alerts.
 Deployed on GCP using GCS and BigQuery, eliminating ~25 hours of manual processing
 per week and scaling analytics coverage across multiple platforms.`,
+      ja: `マルチチャネルのマーケティングデータを対象に、データの取り込みからオーケストレーション、
+分析までを一貫して扱う本番品質のデータ基盤を設計・構築。複数の外部APIやスクレイピング
+ジョブを統一スキーマに統合し、Airflowでリトライ・バックフィル・SLA監視・Slack通知を
+含むオーケストレーションを実現。GCS・BigQueryを用いてGCP上にデプロイし、週あたり
+約25時間の手作業を削減、複数プラットフォームへ分析範囲を拡大しました。`,
+    },
     imgSrc: '/static/images/airflow.png',
     tags: [
       'Python',

@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "blog": "ブログ",
+    "tags": "タグ",
+    "projects": "プロジェクト",
+    "about": "について"
+  },
+  "home": {
+    "resume": "履歴書",
+    "projectsTitle": "プロジェクト",
+    "projectsDescription": "私の開発プロジェクトと技術的探求の紹介"
+  },
+  "projects": {
+    "title": "プロジェクト",
+    "description": "私の開発プロジェクトと技術的探求の紹介"
+  },
+  "blog": {
+    "allPosts": "すべての投稿",
+    "previous": "前へ",
+    "next": "次へ",
+    "pageOf": "/"
+  },
+  "tags": {
+    "title": "タグ",
+    "noTags": "タグが見つかりません。"
+  },
+  "card": {
+    "code": "コード",
+    "demo": "デモ"
+  },
+  "notFound": {
+    "title": "ページが見つかりませんでした。",
+    "message": "ご安心ください。ホームページには他にもたくさんのコンテンツがあります。",
+    "back": "ホームページに戻る"
+  }
+}
