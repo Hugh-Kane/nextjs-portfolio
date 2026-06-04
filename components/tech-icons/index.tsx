@@ -14,6 +14,12 @@ import {
   GSheets,
   GCS,
   apple,
+  TypeScript,
+  PostgreSQL,
+  Prisma,
+  TailwindCSS,
+  ShadcnUI,
+  Vercel,
   // Import all your icon functions here
 } from './icons'
 
@@ -37,6 +43,12 @@ const components = {
   googlesheetsapi: GSheets,
   googlecloudstorage: GCS,
   appledeveloperapi: apple,
+  typescript: TypeScript,
+  postgresql: PostgreSQL,
+  prisma: Prisma,
+  tailwindcss: TailwindCSS,
+  'shadcn/ui': ShadcnUI,
+  vercel: Vercel,
   // Add more mappings...
 }
 

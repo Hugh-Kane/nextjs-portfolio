@@ -19,6 +19,36 @@ interface Project {
 const projectsData: Project[] = [
   {
     title: {
+      en: 'Neuchi (値打ち) — Community Bargain-Deals Platform',
+      ja: 'Neuchi（値打ち）— コミュニティ型お得情報共有プラットフォーム',
+    },
+    description: {
+      en: `A full-stack, Japanese-language community platform for discovering and sharing bargain deals.
+Users post and vote on deals, earning reputation through a tiered, transaction-safe scoring system.
+Features multi-provider OAuth (GitHub, Google, and LINE), a dynamic sortable/filterable feed,
+a TipTap rich-text editor, and SEO engineering with structured data. Live at neuchi.jp.`,
+      ja: `特売情報の発見・共有ができるフルスタックな日本語コミュニティプラットフォーム。
+ユーザーは特売情報を投稿・投票し、段階的でトランザクション保証されたスコアリングを通じて
+評価ポイントを獲得します。GitHub・Google・LINE によるマルチプロバイダー OAuth 認証、
+並び替え・絞り込みに対応した動的フィード、TipTap によるリッチテキスト編集、構造化データによる
+SEO 対応を備えています。neuchi.jp で公開中。`,
+    },
+    imgSrc: '/static/images/neuchi.png',
+    tags: [
+      'Next.js',
+      'TypeScript',
+      'PostgreSQL',
+      'Prisma',
+      'NextAuth.js',
+      'Tailwind CSS',
+      'shadcn/ui',
+      'TipTap',
+      'Vercel',
+    ],
+    demoUrl: 'https://neuchi.jp',
+  },
+  {
+    title: {
       en: 'Automated Ad Creative Upload System',
       ja: '広告クリエイティブ自動アップロードシステム',
     },
